@@ -66,7 +66,10 @@ class Book extends Component {
             </div>
             {Object.entries(description.pdf).forEach((key, value) => (
               <div className="book--download--buttons">
-                <button className="button" data-link={value}>
+                <button
+                  className="button"
+                  data-link={value}
+                  onClick={(e) => this.downloadBookAsPdf(e.target.data)}>
                   {key}
                 </button>
               </div>
