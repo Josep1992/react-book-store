@@ -7,9 +7,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import BookShelf from './components/Books/BookShelf'
 import Book from './components/Books/Book'
 
+//Layout
+import Hero from './components/Layout/Hero'
+import Search from './components/Layout/Search'
+
 class App extends Component {
   state = {
     shelf: [],
+    query: '',
   }
 
   componentDidMount = async () => {
@@ -23,18 +28,34 @@ class App extends Component {
     })
   }
 
+  handleQuery = (query) => {
+    this.setState({
+      query,
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Router>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <BookShelf books={this.state.shelf} />}
+          <>
+            <Hero
+              btnText={'learn more'}
+              tagline={'programming \n books'}
+              paragraph={
+                'Lorem ipsum dolor sit amet, eripuit nusquam no ius. Vel solum forensibus reformidans ei, sea id partem regione.'
+              }
             />
-            <Route path="/book/:isbn" component={Book} />
-          </Switch>
+            <Search onHandleQuery={this.handleQuery} />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <BookShelf books={this.state.shelf} />}
+              />
+              <Route path="/book/:isbn" component={Book} />
+            </Switch>
+          </>
         </Router>
       </div>
     )
