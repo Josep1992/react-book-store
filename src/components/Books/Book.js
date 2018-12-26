@@ -57,6 +57,7 @@ class Book extends Component {
               <h1 className="book--title">{`Authors: ${authors}`}</h1>
             )}
             <h2 className="book--subtitle">{`Subtitle: ${subtitle}`}</h2>
+            <h3 className="book--desc">{`Description: ${desc}`}</h3>
             <h3 className="book--isbn">{`Isbn: ${isbn13}`}</h3>
           </div>
           <div className="book--body">
