@@ -8,15 +8,19 @@ class Book extends Component {
   }
 
   componentDidMount = async () => {
-    const isbnNumber = this.props.location.state.isbn
-    const bookInfoRequest = axios.get(
-      `https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/books/${isbnNumber}`,
-    )
-    const bookInfo = await bookInfoRequest
+    try {
+      const isbnNumber = this.props.location.state.isbn
+      const bookInfoRequest = axios.get(
+        `https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/books/${isbnNumber}`,
+      )
+      const bookInfo = await bookInfoRequest
 
-    this.setState({
-      description: bookInfo.data,
-    })
+      this.setState({
+        description: bookInfo.data,
+      })
+    } catch (error) {
+      console.error({ error })
+    }
   }
 
   downloadBookAsPdf = (book) => {
@@ -24,56 +28,62 @@ class Book extends Component {
   }
 
   render() {
-    const { description } = this.state
+    const {
+      authors,
+      title,
+      subtitle,
+      image,
+      desc,
+      isbn13,
+      language,
+      pages,
+      price,
+      rating,
+      pdf,
+      publisher,
+      year,
+    } = this.state.description
+
     return (
       <>
+        <br />
         <Link to="/" className="button">
           Back to Home
         </Link>
+
         <div className="book--container">
           <div className="book--container--title">
-            <h1 className="book--title">{`Authors: ${description.authors}`}</h1>
-            <h2 className="book--subtitle">{`Subtitle: ${
-              description.desc
-            }`}</h2>
-            <h3 className="book--isbn">{`Isbn: ${description.isbn13}`}</h3>
+            {authors && (
+              <h1 className="book--title">{`Authors: ${authors}`}</h1>
+            )}
+            <h2 className="book--subtitle">{`Subtitle: ${subtitle}`}</h2>
+            <h3 className="book--isbn">{`Isbn: ${isbn13}`}</h3>
           </div>
           <div className="book--body">
-            {description.image && (
-              <img src={description.image} alt={description.title} />
-            )}
+            {image && <img src={image} alt={title} />}
             <div className="book--details">
               <ul className="book--details--list">
-                <li className="book--details--list--item">{`Language: ${
-                  description.language
-                }`}</li>
-                <li className="book--details--list--item">{`Pages: ${
-                  description.pages
-                }`}</li>
-                <li className="book--details--list--item">{`Price: ${
-                  description.price
-                }`}</li>
-                <li className="book--details--list--item">{`Rating:${
-                  description.rating
-                }`}</li>
-                <li className="book--details--list--item">{`Release:${
-                  description.year
-                }`}</li>
-                <li className="book--details--list--item">{`Publisher:${
-                  description.publisher
-                }`}</li>
+                {language && (
+                  <li className="book--details--list--item">{`Language: ${language}`}</li>
+                )}
+                <li className="book--details--list--item">{`Pages: ${pages}`}</li>
+                <li className="book--details--list--item">{`Price: ${price}`}</li>
+                <li className="book--details--list--item">{`Rating: ${rating}`}</li>
+                <li className="book--details--list--item">{`Release: ${year}`}</li>
+                <li className="book--details--list--item">{`Publisher: ${publisher}`}</li>
               </ul>
             </div>
-            {Object.entries(description.pdf).forEach((key, value) => (
-              <div className="book--download--buttons">
-                <button
-                  className="button"
-                  data-link={value}
-                  onClick={(e) => this.downloadBookAsPdf(e.target.data)}>
-                  {key}
-                </button>
-              </div>
-            ))}
+            {pdf &&
+              Object.entries(pdf).forEach((key, value) => (
+                <div className="book--download--buttons">
+                  <button
+                    className="button"
+                    data-link={value}
+                    onClick={(e) => this.downloadBookAsPdf(e.target.data)}>
+                    {key}
+                  </button>
+                </div>
+              ))}
           </div>
         </div>
       </>

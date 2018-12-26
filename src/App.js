@@ -30,7 +30,7 @@ class App extends Component {
 
   handleQuery = (query) => {
     this.setState({
-      query,
+      query: query.trim(),
     })
   }
 
