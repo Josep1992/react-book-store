@@ -15,6 +15,7 @@ class App extends Component {
   state = {
     shelf: [],
     query: '',
+    loading: false,
   }
 
   componentDidMount = async () => {
