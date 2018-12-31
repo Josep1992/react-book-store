@@ -21,7 +21,7 @@
   font-style: bolder;
 
   &:hover {
-    background-color: #7df4fc;
+    background-color: #affccd;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
     color: #0d1829;
     cursor: pointer;
@@ -67,9 +67,9 @@
   text-align: center;
   padding: 2px;
   margin: 0.7em;
-  background-color: rgba(243, 230, 231, 0.925);
+  background-color: #fbfcfd;
   border-radius: 7px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 
   &--image {
     display: block;
