@@ -3,12 +3,17 @@
   flex-wrap: wrap;
   flex: 1;
   justify-content: center;
+  padding: 10px;
   margin: 0 auto;
+}
 
-  &--section--title {
-    display: block;
-    font-size: 32px;
-    margin-bottom: 1em;
+.section--header {
+  display: block;
+  text-align: center;
+  font-size: 32px;
+  @media screen and (min-width: 540px) {
+    font-size: 40px;
+    margin-bottom: 5px;
   }
 }
 
@@ -24,21 +29,29 @@
 
   &:hover {
     background-color: #7df4fc;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-7px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    color: #0d1829;
+    cursor: pointer;
   }
 }
 
 .hero {
-  background-color: #cffdb0;
+  background-color: #affccd;
   padding: 10px;
-  height: 400px;
+  height: 250px;
   justify-content: flex-end;
   text-align: center;
+  @media screen and(min-width:540px) {
+    height: 300px;
+  }
   &--tagline {
     color: #0d1829;
     text-transform: uppercase;
-    font-size: 4em;
+    font-size: 32px;
+
+    @media screen and(min-width:540px) {
+      font-size: 3.5em;
+    }
   }
 
   &--button-dark {
@@ -48,9 +61,20 @@
 
 .book {
   text-align: center;
-  padding: 0 5 0 5px;
-  margin: 0.5em;
+  padding: 2px;
+  margin: 0.7em;
+  background-color: rgba(186, 187, 188, 0.3);
+  border-radius: 7px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
+  &--image {
+    display: block;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  &--title {
+    margin-top: -20px;
+  }
   &--button-light {
     color: #0d1829;
     background-color: #ffffff;
