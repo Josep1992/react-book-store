@@ -9,7 +9,7 @@ import Book from './components/Books/Book'
 
 //Layout
 import Hero from './components/Layout/Hero'
-import Search from './components/Layout/Search'
+// import Search from './components/Layout/Search'
 
 class App extends Component {
   state = {
@@ -42,12 +42,12 @@ class App extends Component {
           <>
             <Hero
               btnText={'learn more'}
-              tagline={'programming \n books'}
+              tagline={'programming books'}
               paragraph={
                 'Lorem ipsum dolor sit amet, eripuit nusquam no ius. Vel solum forensibus reformidans ei, sea id partem regione.'
               }
             />
-            <Search onHandleQuery={this.handleQuery} />
+            {/* <Search onHandleQuery={this.handleQuery} /> */}
             <Switch>
               <Route
                 exact

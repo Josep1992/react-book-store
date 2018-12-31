@@ -24,7 +24,7 @@ class Book extends Component {
 
       this.setState({
         description: bookInfo.data,
-        loading: setTimeout(() => this.setState({ loading: false }), 1000),
+        loading: setTimeout(() => this.setState({ loading: false }), 500),
       })
     } catch (error) {
       console.error({ error })
@@ -66,7 +66,7 @@ class Book extends Component {
     return (
       <>
         <br />
-        <Link to="/" className="button">
+        <Link to="/" className="button book--button-light">
           Back to Home
         </Link>
         {this.state.loading ? (
