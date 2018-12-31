@@ -69,7 +69,9 @@
   margin: 0.7em;
   background-color: #fbfcfd;
   border-radius: 7px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  &:hover {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  }
 
   &--image {
     display: block;
