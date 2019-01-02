@@ -7,6 +7,7 @@ const BookList = ({ info }) => (
       <img className="book--image" src={info.image} alt={info.title} />
     )}
     <h5 className="book--title">{info.title}</h5>
+
     <br />
     <Link
       to={{ pathname: `/book/${info.isbn13}`, state: { isbn: info.isbn13 } }}
