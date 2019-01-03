@@ -65,46 +65,44 @@ class Book extends Component {
 
     return (
       <>
-        <br />
-        <Link to="/" className="button book--button-light">
-          Back to Home
-        </Link>
         {this.state.loading ? (
-          <Loader />
+          <Loader className="loader--center" />
         ) : (
-          <div className="book--container">
-            <div className="book--container--title">
+          <div className="_book--container">
+            <Link to="/" className="button _book--button-light">
+              Back to Home
+            </Link>
+            <div className="_book--header">
               {authors && (
-                <h1 className="book--title">{`Authors: ${authors}`}</h1>
+                <h1 className="_book--header_title">{`Authors: ${authors}`}</h1>
               )}
-              <h2 className="book--subtitle">{`Subtitle: ${subtitle}`}</h2>
-              <h3 className="book--desc">{`Description: ${desc}`}</h3>
-              <h3 className="book--isbn">{`Isbn: ${isbn13}`}</h3>
+              <h2 className="_book--header_subtitle">{`Subtitle: ${subtitle}`}</h2>
+              <h3 className="_book--header_desc">{`Description: ${desc}`}</h3>
+              <h3 className="_book--header_isbn">{`Isbn: ${isbn13}`}</h3>
             </div>
-            <div className="book--body">
+            <div className="_book--body">
               {image && <img src={image} alt={title} />}
-              <div className="book--details">
-                <ul className="book--details--list">
-                  {language && (
-                    <li className="book--details--list--item">{`Language: ${language}`}</li>
-                  )}
-                  {pages && (
-                    <li className="book--details--list--item">{`Pages: ${pages}`}</li>
-                  )}
-                  {price && (
-                    <li className="book--details--list--item">{`Price: ${price}`}</li>
-                  )}
-                  {rating && (
-                    <li className="book--details--list--item">{`Rating: ${rating}`}</li>
-                  )}
-                  {year && (
-                    <li className="book--details--list--item">{`Release: ${year}`}</li>
-                  )}
-                  {publisher && (
-                    <li className="book--details--list--item">{`Publisher: ${publisher}`}</li>
-                  )}
-                </ul>
-              </div>
+              <ul className="_book--details">
+                {language && (
+                  <li className="_book--details--list--item">{`Language: ${language}`}</li>
+                )}
+                {pages && (
+                  <li className="_book--details--list--item">{`Pages: ${pages}`}</li>
+                )}
+                {price && (
+                  <li className="_book--details--list--item">{`Price: ${price}`}</li>
+                )}
+                {rating && (
+                  <li className="_book--details--list--item">{`Rating: ${rating}`}</li>
+                )}
+                {year && (
+                  <li className="_book--details--list--item">{`Release: ${year}`}</li>
+                )}
+                {publisher && (
+                  <li className="_book--details--list--item">{`Publisher: ${publisher}`}</li>
+                )}
+              </ul>
+
               {pdf && this.createDownloadButtons(pdf)}
             </div>
           </div>

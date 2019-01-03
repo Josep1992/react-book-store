@@ -1,4 +1,14 @@
-// ==================================LAYOUT STYLES
+//===================================Mixin
+@mixin btnColor() {
+}
+
+// ==================================Layout styles
+
+.loader--center {
+  margin: 20px auto;
+  display: block;
+  height: 100%;
+}
 
 .section--header {
   display: block;
@@ -13,7 +23,7 @@
 .button {
   border-radius: 15px;
   padding: 10px 1em 10px 1em;
-  color: #fffeff;
+  color: #0d1829;
   text-transform: uppercase;
   border: none;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -21,15 +31,15 @@
   font-style: bolder;
 
   &:hover {
-    background-color: #affccd;
+    background-color: #2d2dde;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-    color: #0d1829;
+    color: #fffeff;
     cursor: pointer;
   }
 }
 
 .hero {
-  background-color: #affccd;
+  background-color: #00d664;
   padding: 10px;
   height: 250px;
   justify-content: flex-end;
@@ -52,7 +62,7 @@
   }
 }
 
-// ++++++++++++++++++++++COMPONENTS STYLES
+// ++++++++++++++++++++++Components styles
 
 .bookshelf {
   display: flex;
@@ -66,6 +76,7 @@
   }
 }
 
+//Book container BookList Component
 .book {
   text-align: center;
   margin: 0.7em 0;
@@ -78,13 +89,36 @@
   &--image {
     display: block;
     height: auto;
-    margin-bottom: 5px;
+    margin: 5px auto;
   }
   &--title {
     margin-top: -15px;
   }
   &--button-light {
     color: #0d1829;
+    margin: 10px 0 10px 0;
     background-color: #ffffff;
+  }
+}
+
+//Book Container Book Component
+._book {
+  &--header {
+    text-align: left;
+    padding: 1rem;
+    &_title {
+      //
+    }
+    &_subtitle {
+      //
+    }
+    &_desc {
+      //
+    }
+    &_isbn {
+      //
+    }
+  }
+  &--body {
   }
 }
