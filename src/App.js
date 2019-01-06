@@ -41,13 +41,12 @@ class App extends Component {
         <Router>
           <>
             <Hero
-              btnText={'learn more'}
+              onHandleQuery={this.handleQuery}
               tagline={'programming books'}
               paragraph={
                 'Lorem ipsum dolor sit amet, eripuit nusquam no ius. Vel solum forensibus reformidans ei, sea id partem regione.'
               }
             />
-            {/* <Search onHandleQuery={this.handleQuery} /> */}
             <Switch>
               <Route
                 exact

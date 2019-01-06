@@ -6,6 +6,8 @@ class Search extends Component {
       <input
         type="text"
         name="book"
+        className="search--input"
+        autoFocus
         placeholder="Search for a book"
         onChange={(e) => this.props.onHandleQuery(e.target.value)}
       />

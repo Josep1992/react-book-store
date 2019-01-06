@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { ReactComponent as Loader } from '../../assets/Gear.svg'
+import { ReactComponent as Loader } from '../../assets/Loader.svg'
 import axios from 'axios'
 
 class Book extends Component {
@@ -72,38 +72,44 @@ class Book extends Component {
             <Link to="/" className="button _book--button-light">
               Back to Home
             </Link>
-            <div className="_book--header">
-              {authors && (
-                <h1 className="_book--header_title">{`Authors: ${authors}`}</h1>
-              )}
-              <h2 className="_book--header_subtitle">{`Subtitle: ${subtitle}`}</h2>
-              <h3 className="_book--header_desc">{`Description: ${desc}`}</h3>
-              <h3 className="_book--header_isbn">{`Isbn: ${isbn13}`}</h3>
-            </div>
-            <div className="_book--body">
-              {image && <img src={image} alt={title} />}
-              <ul className="_book--details">
-                {language && (
-                  <li className="_book--details--list--item">{`Language: ${language}`}</li>
+            <br />
+            <div className="_book--container_content">
+              <div className="_book--header">
+                {authors && (
+                  <h1 className="_book--header_title">{`Authors: ${authors}`}</h1>
                 )}
-                {pages && (
-                  <li className="_book--details--list--item">{`Pages: ${pages}`}</li>
-                )}
-                {price && (
-                  <li className="_book--details--list--item">{`Price: ${price}`}</li>
-                )}
-                {rating && (
-                  <li className="_book--details--list--item">{`Rating: ${rating}`}</li>
-                )}
-                {year && (
-                  <li className="_book--details--list--item">{`Release: ${year}`}</li>
-                )}
-                {publisher && (
-                  <li className="_book--details--list--item">{`Publisher: ${publisher}`}</li>
-                )}
-              </ul>
+                <h2 className="_book--header_subtitle">{`Subtitle: ${subtitle}`}</h2>
+                <h3 className="_book--header_desc">{`Description: ${desc}`}</h3>
+                <h3 className="_book--header_isbn">{`Isbn: ${isbn13}`}</h3>
 
-              {pdf && this.createDownloadButtons(pdf)}
+                <ul className="_book--details">
+                  {language && (
+                    <li className="_book--details--list--item">{`Language: ${language}`}</li>
+                  )}
+                  {pages && (
+                    <li className="_book--details--list--item">{`Pages: ${pages}`}</li>
+                  )}
+                  {price && (
+                    <li className="_book--details--list--item">{`Price: ${price}`}</li>
+                  )}
+                  {rating && (
+                    <li className="_book--details--list--item">{`Rating: ${rating}`}</li>
+                  )}
+                  {year && (
+                    <li className="_book--details--list--item">{`Release: ${year}`}</li>
+                  )}
+                  {publisher && (
+                    <li className="_book--details--list--item">{`Publisher: ${publisher}`}</li>
+                  )}
+                </ul>
+              </div>
+              <div className="_book--body">
+                {image && (
+                  <img className="_book--body_image" src={image} alt={title} />
+                )}
+
+                {pdf && this.createDownloadButtons(pdf)}
+              </div>
             </div>
           </div>
         )}
