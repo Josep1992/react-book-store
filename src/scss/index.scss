@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Karla|Rubik:700');
+@import './App.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0 0 1.5em 0;
+  color: $text-color;
+  font-family: $body-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
+  color: $header-color;
+}

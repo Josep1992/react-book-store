@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.scss'
 //Packages
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -19,9 +18,7 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const emptyBookShelf = await axios.get(
-      'https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new',
-    )
+    const emptyBookShelf = await axios.get('https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new')
     const fullBookShelf = await emptyBookShelf
 
     this.setState({
@@ -43,16 +40,10 @@ class App extends Component {
             <Hero
               onHandleQuery={this.handleQuery}
               tagline={'programming books'}
-              paragraph={
-                'Lorem ipsum dolor sit amet, eripuit nusquam no ius. Vel solum forensibus reformidans ei, sea id partem regione.'
-              }
+              paragraph={'Lorem ipsum dolor sit amet, eripuit nusquam no ius. Vel solum forensibus reformidans ei, sea id partem regione.'}
             />
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <BookShelf books={this.state.shelf} />}
-              />
+              <Route exact path="/" render={() => <BookShelf books={this.state.shelf} />} />
               <Route path="/book/:isbn" component={Book} />
             </Switch>
           </>
