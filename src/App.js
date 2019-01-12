@@ -13,23 +13,47 @@ import Hero from './components/Layout/Hero'
 class App extends Component {
   state = {
     shelf: [],
+    searchResult: [],
     query: '',
     loading: false,
+    error: '',
   }
 
   componentDidMount = async () => {
-    const emptyBookShelf = await axios.get('https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new')
-    const fullBookShelf = await emptyBookShelf
+    try {
+      const emptyBookShelf = await axios.get('https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/new')
+      const fullBookShelf = await emptyBookShelf
 
-    this.setState({
-      shelf: fullBookShelf.data.books,
-    })
+      this.setState({
+        shelf: fullBookShelf.data.books,
+      })
+    } catch (error) {
+      this.setState({
+        error,
+      })
+      console.error(error)
+    }
   }
 
   handleQuery = (query) => {
     this.setState({
-      query: query.trim(),
+      query: query.trim().toLowerCase(),
     })
+  }
+
+  searchBookByTitle = async (e) => {
+    e.preventDefault()
+    try {
+      const bookRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/search/${this.state.query}`)
+      const bookResult = await bookRequest
+      this.setState({
+        searchResult: bookResult.data,
+      })
+    } catch (error) {
+      this.setState({
+        error,
+      })
+    }
   }
 
   render() {
@@ -39,8 +63,9 @@ class App extends Component {
           <>
             <Hero
               onHandleQuery={this.handleQuery}
+              onSearch={this.searchBookByTitle}
               tagline={'programming books'}
-              paragraph={'Lorem ipsum dolor sit amet, eripuit nusquam no ius. Vel solum forensibus reformidans ei, sea id partem regione.'}
+              paragraph={'Search books by title, author, ISBN or keywords'}
             />
             <Switch>
               <Route exact path="/" render={() => <BookShelf books={this.state.shelf} />} />

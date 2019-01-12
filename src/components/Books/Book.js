@@ -17,14 +17,12 @@ class Book extends Component {
     })
 
     try {
-      const bookInfoRequest = axios.get(
-        `https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/books/${isbn}`,
-      )
+      const bookInfoRequest = axios.get(`https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/books/${isbn}`)
       const bookInfo = await bookInfoRequest
 
       this.setState({
         description: bookInfo.data,
-        loading: setTimeout(() => this.setState({ loading: false }), 500),
+        loading: setTimeout(() => this.setState({ loading: false }), 1200),
       })
     } catch (error) {
       console.error({ error })
@@ -37,31 +35,12 @@ class Book extends Component {
 
   createDownloadButtons = (pdf) => {
     Object.entries(pdf).forEach((key, value) => (
-      <button
-        className="button"
-        data-link={value}
-        onClick={(e) => this.downloadBookAsPdf(e.target.data)}
-        value={key}
-      />
+      <button className="button" data-link={value} onClick={(e) => this.downloadBookAsPdf(e.target.data)} value={key} />
     ))
   }
 
   render() {
-    const {
-      authors,
-      title,
-      subtitle,
-      image,
-      desc,
-      isbn13,
-      language,
-      pages,
-      price,
-      rating,
-      pdf,
-      publisher,
-      year,
-    } = this.state.description
+    const { authors, title, subtitle, image, desc, isbn13, language, pages, price, rating, pdf, publisher, year } = this.state.description
 
     return (
       <>
@@ -75,38 +54,22 @@ class Book extends Component {
             <br />
             <div className="_book--container_content">
               <div className="_book--header">
-                {authors && (
-                  <h1 className="_book--header_title">{`Authors: ${authors}`}</h1>
-                )}
+                {authors && <h1 className="_book--header_title">{`Authors: ${authors}`}</h1>}
                 <h2 className="_book--header_subtitle">{`Subtitle: ${subtitle}`}</h2>
                 <h3 className="_book--header_desc">{`Description: ${desc}`}</h3>
                 <h3 className="_book--header_isbn">{`Isbn: ${isbn13}`}</h3>
 
                 <ul className="_book--details">
-                  {language && (
-                    <li className="_book--details--list--item">{`Language: ${language}`}</li>
-                  )}
-                  {pages && (
-                    <li className="_book--details--list--item">{`Pages: ${pages}`}</li>
-                  )}
-                  {price && (
-                    <li className="_book--details--list--item">{`Price: ${price}`}</li>
-                  )}
-                  {rating && (
-                    <li className="_book--details--list--item">{`Rating: ${rating}`}</li>
-                  )}
-                  {year && (
-                    <li className="_book--details--list--item">{`Release: ${year}`}</li>
-                  )}
-                  {publisher && (
-                    <li className="_book--details--list--item">{`Publisher: ${publisher}`}</li>
-                  )}
+                  {language && <li className="_book--details--list--item">{`Language: ${language}`}</li>}
+                  {pages && <li className="_book--details--list--item">{`Pages: ${pages}`}</li>}
+                  {price && <li className="_book--details--list--item">{`Price: ${price}`}</li>}
+                  {rating && <li className="_book--details--list--item">{`Rating: ${rating}`}</li>}
+                  {year && <li className="_book--details--list--item">{`Release: ${year}`}</li>}
+                  {publisher && <li className="_book--details--list--item">{`Publisher: ${publisher}`}</li>}
                 </ul>
               </div>
               <div className="_book--body">
-                {image && (
-                  <img className="_book--body_image" src={image} alt={title} />
-                )}
+                {image && <img className="_book--body_image" src={image} alt={title} />}
 
                 {pdf && this.createDownloadButtons(pdf)}
               </div>
