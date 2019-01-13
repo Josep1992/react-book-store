@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //Components
 import BookShelf from './components/Books/BookShelf'
 import Book from './components/Books/Book'
+import { ReactComponent as Loader } from './assets/Loader.svg'
 
 //Layout
 import Hero from './components/Layout/Hero'
@@ -30,8 +31,7 @@ class App extends Component {
     } catch (error) {
       this.setState({
         error,
-      })
-      console.error(error)
+      }) && console.error(error)
     }
   }
 
@@ -42,12 +42,15 @@ class App extends Component {
   }
 
   searchBookByTitle = async (e) => {
-    e.preventDefault()
+    e.preventDefault() // Prevent form submission
+    this.setState({ loading: true })
+
     try {
       const bookRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/search/${this.state.query}`)
       const bookResult = await bookRequest
       this.setState({
-        searchResult: bookResult.data,
+        searchResult: bookResult.data.books,
+        loading: setTimeout(() => this.setState({ loading: false }), 1500),
       })
     } catch (error) {
       this.setState({
@@ -57,18 +60,31 @@ class App extends Component {
   }
 
   render() {
+    const { searchResult, shelf, loading, query } = this.state
+
     return (
       <div className="App">
         <Router>
           <>
             <Hero
               onHandleQuery={this.handleQuery}
+              query={query.length}
               onSearch={this.searchBookByTitle}
               tagline={'programming books'}
               paragraph={'Search books by title, author, ISBN or keywords'}
             />
             <Switch>
-              <Route exact path="/" render={() => <BookShelf books={this.state.shelf} />} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <>
+                    {searchResult.length !== 0 && !loading && <BookShelf books={searchResult} tagline={'search results'} />}
+                    {loading && <Loader className="loader--center" />}
+                    <BookShelf books={shelf} tagline={'ebooks & new books'} />
+                  </>
+                )}
+              />
               <Route path="/book/:isbn" component={Book} />
             </Switch>
           </>

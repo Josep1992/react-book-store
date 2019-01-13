@@ -33,14 +33,14 @@ class Book extends Component {
     console.log('clicked')
   }
 
-  createDownloadButtons = (pdf) => {
-    Object.entries(pdf).forEach((key, value) => (
-      <button className="button" data-link={value} onClick={(e) => this.downloadBookAsPdf(e.target.data)} value={key} />
-    ))
-  }
+  // createDownloadButtons = (pdf) => {
+  //   Object.entries(pdf).forEach((key, value) => (
+  //     <button className="button" data-link={value} onClick={(e) => this.downloadBookAsPdf(e.target.data)} value={key} />
+  //   ))
+  // }
 
   render() {
-    const { authors, title, subtitle, image, desc, isbn13, language, pages, price, rating, pdf, publisher, year } = this.state.description
+    const { authors, title, subtitle, image, desc, isbn13, language, pages, price, rating, /*pdf,*/ publisher, year } = this.state.description
 
     return (
       <>
@@ -56,9 +56,8 @@ class Book extends Component {
               <div className="_book--header">
                 {authors && <h1 className="_book--header_title">{`Authors: ${authors}`}</h1>}
                 <h2 className="_book--header_subtitle">{`Subtitle: ${subtitle}`}</h2>
-                <h3 className="_book--header_desc">{`Description: ${desc}`}</h3>
+                <p className="_book--header_desc">{`Description: ${desc}`}</p>
                 <h3 className="_book--header_isbn">{`Isbn: ${isbn13}`}</h3>
-
                 <ul className="_book--details">
                   {language && <li className="_book--details--list--item">{`Language: ${language}`}</li>}
                   {pages && <li className="_book--details--list--item">{`Pages: ${pages}`}</li>}
@@ -70,8 +69,7 @@ class Book extends Component {
               </div>
               <div className="_book--body">
                 {image && <img className="_book--body_image" src={image} alt={title} />}
-
-                {pdf && this.createDownloadButtons(pdf)}
+                {/* {pdf && this.createDownloadButtons(pdf)} */}
               </div>
             </div>
           </div>

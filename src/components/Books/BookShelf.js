@@ -2,9 +2,9 @@ import React from 'react'
 import BookList from './BookList'
 import Header from '../Layout/Header'
 
-const BookShelf = ({ books }) => (
+const BookShelf = ({ books, tagline }) => (
   <>
-    <Header tagline={'Ebooks & New Books'} />
+    <Header tagline={tagline} />
     <div className="bookshelf">
       {books.map((book) => (
         <BookList info={book} key={book.isbn13} />

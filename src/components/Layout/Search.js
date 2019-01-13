@@ -12,7 +12,7 @@ class Search extends Component {
           placeholder="Search for a book"
           onChange={(e) => this.props.onHandleQuery(e.target.value)}
         />
-        <button className="button form--button">Search</button>
+        {this.props.query !== 0 && <button className="button form--button">Search</button>}
       </form>
     )
   }
