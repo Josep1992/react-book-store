@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //Components
 import BookShelf from './components/Books/BookShelf'
 import Book from './components/Books/Book'
-import { ReactComponent as Loader } from './assets/Loader.svg'
 
 //Layout
 import Hero from './components/Layout/Hero'
+import { ReactComponent as Loader } from './assets/Loader.svg'
 
 class App extends Component {
   state = {
