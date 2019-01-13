@@ -9,7 +9,6 @@ import { ReactComponent as Loader } from './assets/Loader.svg'
 
 //Layout
 import Hero from './components/Layout/Hero'
-// import Search from './components/Layout/Search'
 
 class App extends Component {
   state = {
@@ -66,21 +65,15 @@ class App extends Component {
       <div className="App">
         <Router>
           <>
-            <Hero
-              onHandleQuery={this.handleQuery}
-              query={query.length}
-              onSearch={this.searchBookByTitle}
-              tagline={'programming books'}
-              paragraph={'Search books by title, author, ISBN or keywords'}
-            />
+            <Hero onHandleQuery={this.handleQuery} query={query.length} onSearch={this.searchBookByTitle} tagline={'programming books'} />
             <Switch>
               <Route
                 exact
                 path="/"
                 render={() => (
                   <>
-                    {searchResult.length !== 0 && !loading && <BookShelf books={searchResult} tagline={'search results'} />}
                     {loading && <Loader className="loader--center" />}
+                    {searchResult.length !== 0 && !loading && <BookShelf books={searchResult} tagline={'search results'} />}
                     <BookShelf books={shelf} tagline={'ebooks & new books'} />
                   </>
                 )}

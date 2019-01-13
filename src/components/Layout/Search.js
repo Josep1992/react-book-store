@@ -9,7 +9,7 @@ class Search extends Component {
           name="book"
           className="form--search"
           autoFocus
-          placeholder="Search for a book"
+          placeholder="Search by title, author, ISBN or keywords"
           onChange={(e) => this.props.onHandleQuery(e.target.value)}
         />
         {this.props.query !== 0 && <button className="button form--button">Search</button>}
