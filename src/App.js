@@ -42,20 +42,22 @@ class App extends Component {
 
   searchBookByTitle = async (e) => {
     e.preventDefault() // Prevent form submission
-    this.setState({ loading: true })
 
-    try {
-      const bookRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/search/${this.state.query}`)
-      const bookResult = await bookRequest
-      this.setState({
-        searchResult: bookResult.data.books,
-        loading: setTimeout(() => this.setState({ loading: false }), 1500),
-      })
-    } catch (error) {
-      this.setState({
-        error,
-      })
-    }
+    if (this.state.query !== '') {
+      this.setState({ loading: true })
+      try {
+        const bookRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.itbook.store/1.0/search/${this.state.query}`)
+        const bookResult = await bookRequest
+        this.setState({
+          searchResult: bookResult.data.books,
+          loading: setTimeout(() => this.setState({ loading: false }), 1500),
+        })
+      } catch (error) {
+        this.setState({
+          error,
+        })
+      }
+    } else alert('Cant search with input field empty')
   }
 
   render() {

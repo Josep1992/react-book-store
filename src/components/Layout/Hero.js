@@ -1,5 +1,6 @@
 import React from 'react'
 import Search from '../Layout/Search'
+import PropTypes from 'prop-types'
 
 const Hero = ({ tagline, onHandleQuery, onSearch, query }) => {
   return (
@@ -8,6 +9,13 @@ const Hero = ({ tagline, onHandleQuery, onSearch, query }) => {
       {window.location.pathname.includes('book') !== true && <Search onHandleQuery={onHandleQuery} onSearch={onSearch} query={query} />}
     </div>
   )
+}
+
+Hero.propTypes = {
+  tagline: PropTypes.string,
+  onHandleQuery: PropTypes.func,
+  onSearch: PropTypes.func,
+  query: PropTypes.number,
 }
 
 export default Hero

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const BookList = ({ info }) => (
   <div className="book">
@@ -10,5 +11,8 @@ const BookList = ({ info }) => (
     </Link>
   </div>
 )
+BookList.propTypes = {
+  info: PropTypes.object.isRequired,
+}
 
 export default BookList

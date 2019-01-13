@@ -1,6 +1,7 @@
 import React from 'react'
 import BookList from './BookList'
 import Header from '../Layout/Header'
+import PropTypes from 'prop-types'
 
 const BookShelf = ({ books, tagline }) => (
   <>
@@ -13,4 +14,8 @@ const BookShelf = ({ books, tagline }) => (
   </>
 )
 
+BookShelf.propTypes = {
+  books: PropTypes.array.isRequired,
+  tagline: PropTypes.string,
+}
 export default BookShelf
